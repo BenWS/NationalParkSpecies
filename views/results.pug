@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  body
+    h1 Acadia National Park Species
+    h2 Category: Mammals
+    h2 Abundance: Any
+    p 1 through 10 of 235 Species
+    table
+      thead
+        th Sci. Name
+        th Common Name
+        th Category
+        th Abundance
+      tbody
+      each record in query
+        tr
+          td=record["Scientific Name"]
+          td=record["Common Names"]
+          td=record["Category"]
+          td record["Abundance"]
+    button Prev
+    button Next
+    p Click <a href="index">here</a> to return to the Search Page
+  body
+html

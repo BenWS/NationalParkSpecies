@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    script(crossorigin src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  body
+    h1 U.S. National Park Wildlife
+    form(method='post' action='results' enctype='multipart/form-data')
+      | National Park:
+      br
+      select(name="park")
+        option(value='Acadia National Park') Acadia National Park
+        option(value='Acadia National Park') Acadia National Park
+        option(value='Acadia National Park') Acadia National Park
+        option(value='Acadia National Park') Acadia National Park
+        option(value='Acadia National Park') Acadia National Park
+      br
+      | Category:
+      br
+      select(name="category")
+        option(value='Mammal') Mammal
+        option(value='Mammal') Mammal
+        option(value='Mammal') Mammal
+        option(value='Mammal') Mammal
+        option(value='Mammal') Mammal
+      br
+      | Abundance:
+      br
+      select(name="abundance")
+        option(value='Abundant') Abundant
+      br
+      input(type='submit')
