@@ -14,13 +14,10 @@ app.set('views','views');
 app.set('view engine', 'pug')
 
 
-app.get("/testSearch", (req,res) => res.render('index.pug'))
-app.get("/testResults", (req,res) => res.render('results.pug'))
+app.get("*", (req,res) => res.render('index.pug'))
 
 //set MongoDB Connection URI
 var mongoURI = `mongodb://${process.env.user}:${process.env.password}@ds131621.mlab.com:31621/nationalparks`;
-
-app.get("/",(req,res) => res.send("Jello World!"))
 
 app.post("/results", upload.array() ,(req,res) => {
 
