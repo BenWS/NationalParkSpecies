@@ -34,5 +34,4 @@ app.post("/results", upload.array() ,(req,res) => {
   });
 })
 
-//app.listen() method
-app.listen(8000);
+app.listen(process.env.PORT);
