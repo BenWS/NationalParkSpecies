@@ -21,12 +21,11 @@ var mongoURI = `mongodb://${process.env.user}:${process.env.password}@ds131621.m
 
 app.post("/results", upload.array() ,(req,res) => {
 
-  var data = {test1:1, test2:2, test3:3}
   //connect to MongoDB using Mongo URI
   MongoClient.connect(mongoURI,(err,client) => {
     database = client.db('nationalparks');
     collection = database.collection('species');
-    collection.find().limit(10).toArray((error,result) => {
+    collection.find().map((collection) => collection).limit(100).toArray((error,result) => {
       console.log(result);
       res.render('results', {query:result});
     });
@@ -35,4 +34,3 @@ app.post("/results", upload.array() ,(req,res) => {
 })
 
 app.listen(process.env.PORT);
-console.log(process.env.PORT);
