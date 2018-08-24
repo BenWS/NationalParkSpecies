@@ -25,7 +25,7 @@ app.post("/results", upload.array() ,(req,res) => {
   MongoClient.connect(mongoURI,(err,client) => {
     database = client.db('nationalparks');
     collection = database.collection('species');
-    collection.find({}).map((collection) => {"Scientific Name":1,"Common Names":2, "Category":3, "Abundance":4}).limit(100).toArray((error,result) => {
+    collection.find({}).map((collection) => {return {"Scientific Name":1,"Common Names":2, "Category":3, "Abundance":4}}).limit(100).toArray((error,result) => {
       console.log(result);
       res.render('results', {query:result});
     });
