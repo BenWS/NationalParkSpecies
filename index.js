@@ -21,7 +21,7 @@ app.set('view engine', 'pug');
 var resourceMiddleware = express.static('resources'); //construct function that serves static files from internal 'resources' folder
 app.use("/resources",resourceMiddleware); //'mount' the  function to trigger at the external '/resources' path
 
-app.get("/test", (req,res) => res.render('index-test.pug'))
+// app.get("/test", (req,res) => res.render('index-test.pug'))
 
 app.get("/index", (req,res) => {
   MongoClient.connect(mongoURI, (err,client) => {

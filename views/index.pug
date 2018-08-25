@@ -5,18 +5,19 @@ html
     link(href="resources/style.css" rel="stylesheet" type="text/css")
     script(crossorigin src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
   body
-    div(id="core")
-      h1 U.S. National Park Wildlife
-      form(method='post' action='results' enctype='multipart/form-data')
-        | National Park
-        select(name="park")
-          each park in parks
-            option(value=park) #{park}
-        br
-        | Category
-        select(name="category")
-          each category in categories
-            option(value=category) #{category}
-        br
-        input(type="hidden" name="index" value="0")
-        input(type='submit')
+    div(class="container")
+      div(id="core")
+        h1 U.S. National Park Wildlife
+        form(method='post' action='results' enctype='multipart/form-data')
+          div(class="form-group")
+            label(for='parks') Select National Park
+            select(name="park" id="parks" class="form-control")
+              each park in parks
+                option(value=park) #{park}
+          div(class="form-group")
+            label(id="rank") Select Category
+            select(name="category" id="#rank" class="form-control")
+              each category in categories
+                option(value=category) #{category}
+          input(type="hidden" name="index" value="0")
+          button(class="btn btn-primary" type="submit") Submit

@@ -8,24 +8,11 @@ html
     link(href="resources/style.css" rel="stylesheet" type="text/css")
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     body
-      div(class="container-fluid")
-        div(id="core")
+      div(class="container")
+        div(id="core2")
           h1 #{park} Species
           h2 Category: #{category}
           p #{lowerBound} through #{upperBound} of #{count} Species
-          table
-            thead
-              th Sci. Name
-              th Common Name
-              th Category
-              th Abundance
-            tbody
-              each record in query
-                tr
-                  td=record["Scientific Name"]
-                  td=record["Common Names"]
-                  td=record["Category"]
-                  td=record["Abundance"]
           if (lowerBound - 10) >= 0
             form(id="prev" method="post" action="results" enctype="multipart/form-data")
               input(name="Previous" value="Previous" type="submit")
@@ -44,4 +31,17 @@ html
                 value=lowerBound + 10)
               input(type="hidden" name="park" value=park)
               input(type="hidden" name="category" value=category)
+          table(class="table")
+            thead
+              th Sci. Name
+              th Common Name
+              th Category
+              th Abundance
+            tbody
+              each record in query
+                tr
+                  td=record["Scientific Name"]
+                  td=record["Common Names"]
+                  td=record["Category"]
+                  td=record["Abundance"]
           p Click <a href="index">here</a> to return to the Search Page
