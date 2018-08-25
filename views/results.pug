@@ -1,27 +1,47 @@
+//https://pugjs.org/language/iteration.html
+//https://pugjs.org/language/conditionals.html
+
 doctype html
 html
   head
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(href="resources/style.css" rel="stylesheet" type="text/css")
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
-  body
-    h1 Acadia National Park Species
-    h2 Category: Mammals
-    h2 Abundance: Any
-    p 1 through 10 of 235 Species
-    table
-      thead
-        th Sci. Name
-        th Common Name
-        th Category
-        th Abundance
-      tbody
-      each record in query
-        tr
-          td=record["Scientific Name"]
-          td=record["Common Names"]
-          td=record["Category"]
-          td=record["Abundance"]
-    button Prev
-    button Next
-    p Click <a href="index">here</a> to return to the Search Page
-  body
-html
+    body
+      div(class="container-fluid")
+        div(id="core")
+          h1 #{park} Species
+          h2 Category: #{category}
+          p #{lowerBound} through #{upperBound} of #{count} Species
+          table
+            thead
+              th Sci. Name
+              th Common Name
+              th Category
+              th Abundance
+            tbody
+              each record in query
+                tr
+                  td=record["Scientific Name"]
+                  td=record["Common Names"]
+                  td=record["Category"]
+                  td=record["Abundance"]
+          if (lowerBound - 10) >= 0
+            form(id="prev" method="post" action="results" enctype="multipart/form-data")
+              input(name="Previous" value="Previous" type="submit")
+              input(
+                type="hidden"
+                name="index"
+                value=lowerBound - 10)
+              input(type="hidden" name="park" value=park)
+              input(type="hidden" name="category" value=category)
+          if (lowerBound + 10) < count
+            form(id="next" method="post" action="results" enctype="multipart/form-data")
+              input(name="Next" value="Next" type="submit")
+              input(
+                type="hidden"
+                name="index"
+                value=lowerBound + 10)
+              input(type="hidden" name="park" value=park)
+              input(type="hidden" name="category" value=category)
+          p Click <a href="index">here</a> to return to the Search Page

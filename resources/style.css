@@ -1,0 +1,17 @@
+#prev, #next {
+  display:inline
+}
+
+#core {
+  /* border-color:#000;
+  border-style:solid;
+  border-radius:5px; */
+  margin:100px auto 0 auto;
+  width:50%
+}
+
+#application {
+  width:50%;
+  margin:100px auto 0 auto;
+
+}

@@ -1,31 +1,22 @@
 doctype html
 html
   head
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(href="resources/style.css" rel="stylesheet" type="text/css")
     script(crossorigin src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
   body
-    h1 U.S. National Park Wildlife
-    form(method='post' action='results' enctype='multipart/form-data')
-      | National Park:
-      br
-      select(name="park")
-        option(value='Acadia National Park') Acadia National Park
-        option(value='Acadia National Park') Acadia National Park
-        option(value='Acadia National Park') Acadia National Park
-        option(value='Acadia National Park') Acadia National Park
-        option(value='Acadia National Park') Acadia National Park
-      br
-      | Category:
-      br
-      select(name="category")
-        option(value='Mammal') Mammal
-        option(value='Mammal') Mammal
-        option(value='Mammal') Mammal
-        option(value='Mammal') Mammal
-        option(value='Mammal') Mammal
-      br
-      | Abundance:
-      br
-      select(name="abundance")
-        option(value='Abundant') Abundant
-      br
-      input(type='submit')
+    div(id="core")
+      h1 U.S. National Park Wildlife
+      form(method='post' action='results' enctype='multipart/form-data')
+        | National Park
+        select(name="park")
+          each park in parks
+            option(value=park) #{park}
+        br
+        | Category
+        select(name="category")
+          each category in categories
+            option(value=category) #{category}
+        br
+        input(type="hidden" name="index" value="0")
+        input(type='submit')
