@@ -21,8 +21,6 @@ app.set('view engine', 'pug');
 var resourceMiddleware = express.static('resources'); //construct function that serves static files from internal 'resources' folder
 app.use("/resources",resourceMiddleware); //'mount' the  function to trigger at the external '/resources' path
 
-// app.get("/test", (req,res) => res.render('index-test.pug'))
-
 app.get("/index", (req,res) => {
   MongoClient.connect(mongoURI, (err,client) => {
     var database = client.db("nationalparks");
@@ -39,14 +37,10 @@ app.get("/index", (req,res) => {
 })
 
 app.post("/results", upload.array() ,(req,res) => {
-  //connect to MongoDB using Mongo URI
-
-  console.log(req.body.category);
-
+  //connect to MongoDB using Mongo
   MongoClient.connect(mongoURI,(err,client) => {
     var database = client.db('nationalparks');
     var collection = database.collection('species');
-
 
     var queryCriteria = {
       "Park Name":req.body.park,
@@ -67,6 +61,14 @@ app.post("/results", upload.array() ,(req,res) => {
       var lowerBound = parseInt(req.body.index)
       var recordCount = results[1];
       var upperBound = (lowerBound + 10 < recordCount) ? (lowerBound +  10) : recordCount;
+
+      // modify "Common Names" field to contain only the shortest length name from original
+      results[0].forEach((document) => {
+        document["Common Names"] =
+          document["Common Names"].split(", ")
+            .sort((nameA,nameB) => nameA.length - nameB.length)[0]
+      });
+
       res.render('results', {
         query:results[0],
         lowerBound:lowerBound,

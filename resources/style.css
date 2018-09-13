@@ -3,9 +3,9 @@
 }
 
 #core {
-  /* border-color:#000;
+  border-color:#000;
   border-style:solid;
-  border-radius:5px; */
+  border-radius:5px;
   margin:100px auto 0 auto;
   width:50%
 }
@@ -18,5 +18,19 @@
 #application {
   width:50%;
   margin:100px auto 0 auto;
+}
 
+h1 {
+  display:inline-block;
+  width:75%
+}
+
+#header p, #header h1 {
+  text-align:center
+}
+
+#next, #previous {
+  display:inline-block;
+  width:12.5%;
+  font-size:200%;
 }
