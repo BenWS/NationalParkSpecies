@@ -11,33 +11,32 @@ html
     body
       div(class="container")
         div(id="core2")
-          div(id="previous")
-            if (lowerBound - 10) >= 0
-              form(id="prev" method="post" action="results" enctype="multipart/form-data")
-                input(name="Previous" value="Previous" type="submit")
-                input(
-                  type="hidden"
-                  name="index"
-                  value=lowerBound - 10)
-                input(type="hidden" name="park" value=park)
-                input(type="hidden" name="category" value=category)
-          div(id="header")
+          //- div(id="previous")
+          //-   if (lowerBound - 10) >= 0
+          //-     form(id="prev" method="post" action="results" enctype="multipart/form-data")
+          //-       input(name="Previous" value="Previous" type="submit")
+          //-       input(
+          //-         type="hidden"
+          //-         name="index"
+          //-         value=lowerBound - 10)
+          //-       input(type="hidden" name="park" value=park)
+          //-       input(type="hidden" name="category" value=category)
+          h1 Results
+          //- h2 Category: #{category}
+          div(id="subtitle")
             i(id="previous" class="fas fa-angle-left")
-            div(style="display:inline-block" id="header-content")
-              h1 Results
-              //- h2 Category: #{category}
-              p #{lowerBound} through #{upperBound} of #{count} Species in <strong>#{park}</strong>
-            i(id="next" class="fas fa-angle-right")
-          div(id="next")
-            if (lowerBound + 10) < count
-              form(id="next" method="post" action="results" enctype="multipart/form-data")
-                input(name="Next" type="submit" value="Next")
-                input(
-                  type="hidden"
-                  name="index"
-                  value=lowerBound + 10)
-                input(type="hidden" name="park" value=park)
-                input(type="hidden" name="category" value=category)
+            div(id='temp1') #{lowerBound} through #{upperBound} of #{count} Species in <strong>#{park}</strong>
+            i(id="previous" class="fas fa-angle-right")
+          //- div(id="next")
+          //-   if (lowerBound + 10) < count
+          //-     form(id="next" method="post" action="results" enctype="multipart/form-data")
+          //-       input(name="Next" type="submit" value="Next")
+          //-       input(
+          //-         type="hidden"
+          //-         name="index"
+          //-         value=lowerBound + 10)
+          //-       input(type="hidden" name="park" value=park)
+          //-       input(type="hidden" name="category" value=category)
           table(class="table")
             thead
               th Sci. Name
